@@ -1,16 +1,26 @@
-"""Welcome to Reflex!."""
-
-from PlugnPlayTutoring import styles
-
-# Import all the pages.
-from PlugnPlayTutoring.pages import *
-
 import reflex as rx
 
-
 class State(rx.State):
-    """Define empty state to allow access to rx.State.router."""
+    pass
 
+def index():
+    return rx.vstack(
+        # Title at the top, centered
+        rx.heading("Plug and Play Tutoring", font_size="2em", alignment="center"),
+        
+        # Menu buttons on the left-hand side
+        rx.vstack(
+            rx.button("About Us", color_scheme="blue", font_size="1.2em", alignment="left"),
+            rx.button("Calendar", color_scheme="blue", font_size="1.2em", alignment="left"),
+            rx.button("Tutee Enrollment", color_scheme="blue", font_size="1.2em", alignment="left"),
+            rx.button("Tutor Application", color_scheme="blue", font_size="1.2em", alignment="left"),
+            spacing="1em",
+            alignment="left",
+        ),
+        
+        alignment="center",  # Center everything vertically
+        spacing="2em"  # Add some spacing between elements
+    )
 
-# Create the app.
-app = rx.App(style=styles.base_style)
+app = rx.App()
+app.add_page(index)
